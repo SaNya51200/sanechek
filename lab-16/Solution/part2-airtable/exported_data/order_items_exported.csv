@@ -1,0 +1,4 @@
+airtable_id,order,product,quantity,unit_price
+reci1,ORD-1001,Ноутбук,1,75000
+reci2,ORD-1001,Мышь,2,1500
+reci3,ORD-1002,Книга SQL,1,2500

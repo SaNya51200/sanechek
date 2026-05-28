@@ -1,0 +1,7 @@
+folder_id = "b1gxxxxxxxxxxxxxx"
+network_id = "enpxxxxxxxxxxxxxx"
+subnet_id = "e9bxxxxxxxxxxxxxx"
+zone = "ru-central1-a"
+project_name = "book-api-lab17"
+db_password = "change-me-outside-git"
+

@@ -1,0 +1,18 @@
+{
+  "generated_code": {
+    "strengths": [
+      "functions are deterministic",
+      "type hints and docstrings are present",
+      "edge cases are covered by pytest"
+    ],
+    "risks": [
+      "LLM output must be reviewed before production use",
+      "generated code may omit domain-specific validation"
+    ]
+  },
+  "refactoring": {
+    "before": "global mutable list and unclear short names",
+    "after": "OrderItem dataclass, OrderBasket class, explicit validation"
+  }
+}
+

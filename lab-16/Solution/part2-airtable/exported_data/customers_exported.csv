@@ -1,0 +1,4 @@
+airtable_id,name,email,phone,city,customer_since
+rec01,Александр Целенко,alex.tselenko@example.com,+79990000001,Москва,2024-01-10
+rec02,Петр Иванов,petr@example.com,+79990000002,Санкт-Петербург,2024-01-11
+rec03,Мария Сидорова,maria@example.com,+79990000003,Казань,2024-01-12

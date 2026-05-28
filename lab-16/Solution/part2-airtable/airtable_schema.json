@@ -1,0 +1,38 @@
+{
+  "base": "Order Management CRM",
+  "tables": [
+    {
+      "name": "Customers",
+      "fields": ["Name", "Email", "Phone", "City", "Customer Since"],
+      "views": ["All customers", "Moscow customers"]
+    },
+    {
+      "name": "Products",
+      "fields": ["Name", "Category", "Price", "Stock", "Active"],
+      "views": ["All products", "Low stock"]
+    },
+    {
+      "name": "Orders",
+      "fields": ["Order Number", "Customer", "Status", "Order Date", "Payment Method", "Total"],
+      "views": ["All orders", "Paid orders", "Orders by status"]
+    },
+    {
+      "name": "Order Items",
+      "fields": ["Order", "Product", "Quantity", "Unit Price", "Line Total"],
+      "views": ["All items"]
+    }
+  ],
+  "relations": [
+    "Orders.Customer -> Customers",
+    "Order Items.Order -> Orders",
+    "Order Items.Product -> Products"
+  ],
+  "forms": [
+    {
+      "name": "New order form",
+      "target_table": "Orders",
+      "fields": ["Customer", "Order Date", "Payment Method", "Status"]
+    }
+  ]
+}
+

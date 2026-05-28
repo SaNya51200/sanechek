@@ -1,0 +1,12 @@
+{
+  "name": "order-paid-notification",
+  "trigger": "Orders.Status changes to Paid",
+  "action": "send webhook to CRM notification endpoint",
+  "payload": {
+    "order_number": "{Order Number}",
+    "customer": "{Customer}",
+    "total": "{Total}"
+  },
+  "secret_storage": "store webhook URL and tokens outside git"
+}
+

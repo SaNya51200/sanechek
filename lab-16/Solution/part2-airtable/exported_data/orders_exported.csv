@@ -1,0 +1,3 @@
+airtable_id,order_number,customer,status,order_date,payment_method,total
+reco1,ORD-1001,Александр Целенко,Paid,2024-01-15,card,78000
+reco2,ORD-1002,Петр Иванов,Paid,2024-01-16,cash,2500
