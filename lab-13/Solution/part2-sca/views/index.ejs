@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comment Board</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .comment { border: 1px solid #ccc; padding: 10px; margin: 10px 0; }
+        .username { font-weight: bold; color: #333; }
+        .date { font-size: 0.8em; color: #666; }
+        .error { color: red; }
+        form { margin: 20px 0; }
+        input, textarea { width: 300px; margin: 5px 0; }
+        button { margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Comment Board</h1>
+    
+    <form action="/comment" method="POST">
+        <div>
+            <label>Username:</label><br>
+            <input type="text" name="username" placeholder="Your name">
+        </div>
+        <div>
+            <label>Comment:</label><br>
+            <textarea name="comment" rows="4" cols="40" placeholder="Your comment"></textarea>
+        </div>
+        <button type="submit">Post Comment</button>
+    </form>
+    
+    <h2>Comments</h2>
+    
+    <% if (error) { %>
+        <div class="error"><%= error %></div>
+    <% } %>
+    
+    <% comments.forEach(function(comment) { %>
+        <div class="comment">
+            <!-- Исправлено на <%= %> для экранирования HTML -->
+            <div class="username"><%= comment.username %></div>
+            <div class="comment-text"><%= comment.comment %></div>
+            <div class="date"><%= comment.created_at %></div>
+        </div>
+    <% }); %>
+    
+    <div id="api-data">
+        <h3>API Data</h3>
+        <button nonce="<%= nonce %>" onclick="loadCommentsSafe()">Load Comments via API</button>
+        <div id="api-result"></div>
+    </div>
+    
+    <div>
+        <h3>Run Safe Code Evaluator</h3>
+        <textarea id="user-code" rows="2" cols="40" placeholder='{"test": 1}'></textarea>
+        <button nonce="<%= nonce %>" onclick="executeCodeSafe()">Evaluate</button>
+    </div>
+
+    <script nonce="<%= nonce %>">
+        // Безопасная загрузка
+        function loadCommentsSafe() {
+            fetch('/api/comments')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('api-result');
+                    container.innerHTML = '';
+                    
+                    data.forEach(comment => {
+                        // Безопасный способ добавления через textContent
+                        const div = document.createElement('div');
+                        div.textContent = comment.comment;
+                        container.appendChild(div);
+                    });
+                });
+        }
+        
+        // Удалён опасный eval(), добавлена проверка через parse
+        function executeCodeSafe() {
+            const code = document.getElementById('user-code').value;
+            try {
+                const data = JSON.parse(code);
+                alert('Parsed data: ' + JSON.stringify(data));
+            } catch (e) {
+                alert('Invalid JSON');
+            }
+        }
+    </script>
+</body>
+</html>

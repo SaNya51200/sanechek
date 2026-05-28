@@ -1,0 +1,6 @@
+sales_cleaned: 11 rows
+sales_aggregated: 3 rows
+Aggregated revenue:
+('Книги', '2024-01', 12000)
+('Электроника', '2024-01', 192500)
+('Канцелярия', '2024-02', 4000)
